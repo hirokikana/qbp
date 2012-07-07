@@ -1,0 +1,49 @@
+QBP - Queue by Python
+version:
+ 0.1
+author:
+ HirokiTakayasu <hiroki.kana@gmail.com>
+ 
+[概要]
+ 任意の時間のかかるコマンドを非同期実行したり、任意の時間に実行させるためのもの。
+
+[必要なモジュール]
+Python >= 2.6
+Redis >= 2.4
+redis.py
+
+[インストール]
+ * redis.py
+  * easy_installからインストール
+   # easy_install redis
+ * Redis
+  * http://redis.io/から最新版をダウンロード
+  * /usr/local以下にデフォルトではインストールされる
+   # make isntall
+  * redis.confを任意の場所に配置し、Redisサーバーを立ち上げる
+   # redis-server /etc/redis.conf
+ * QBP
+  * workerを立ち上げる
+   % python script/worker.py  
+  * schdulerを立ち上げる
+   % python script/scheduler.py
+
+[テスト]
+ # easy_install nose
+ % nosetests
+
+[各サーバーの立ち上げ]
+ * worker
+  即時実行を行うQueueを処理するプロセス
+  ** workerの立ち上げ
+   $ python script/worker.py
+  
+ * scheduler
+  指定した時刻に実行を行うQueueを処理するプロセス
+  ** schdulerの立ち上げ
+   $ python script/scheduler.py
+
+[Queueへのコマンド実行の追加]
+ $ python script/qbp_manager.py add "ls /home"
+
+ 
