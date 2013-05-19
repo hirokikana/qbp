@@ -29,7 +29,8 @@ def add(command, execute_time = 0):
     redis_connection = qbp.RedisConnection('localhost', 6379, 'qbp_')
 
     if execute_timestamp == 0:
-        if queue = qbp.Queue(redis_connection).enqueue(task_param):
+        queue = qbp.Queue(redis_connection).enqueue(task_param)
+	if queue:
             print 'add task success(queue)'
         else:
             print 'add task failed(queue)'
